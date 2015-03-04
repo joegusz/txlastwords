@@ -1,0 +1,14 @@
+import urllib2
+from BeautifulSoup import BeautifulSoup
+
+# part 1
+
+html = urllib2.urlopen('http://www.tdcj.state.tx.us/death_row/dr_info/newburydonaldlast.html').read()
+
+# part 2
+
+soup = BeautifulSoup(html)
+last_words = soup.find('div', attrs={'id': 'body'})
+
+for p in last_words.findAll('p'):
+	print p.text
